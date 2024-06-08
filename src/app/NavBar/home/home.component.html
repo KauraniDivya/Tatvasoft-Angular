@@ -30,58 +30,45 @@
     </div>
   </div>
   <input type="hidden" [(ngModel)]="searchParam">
-  <div *ngIf="view =='grid'" class="row">
+  <div *ngIf="view == 'grid'" class="row">
     <ng-container *ngIf="(missionList | search:searchParam | paginate:{itemsPerPage:missionPerPages,currentPage:page,totalItems:totalMission}) as result">
       <div class="col-md-4 mb-4" *ngFor="let item of result">
         <div class="card h-100 shadow-lg rounded-3">
           <div class="card-header position-relative">
-            <img src="{{item.missionImages}}" alt="No Image" class="card-img-top rounded-top" onerror="this.src='assets/NoImg.png'">
+            <img src="{{item.missionImages}}" alt="No Image" style="height: 240px;" class="card-img-top rounded-top" onerror="this.src='assets/NoImg.png'">
             <div *ngIf="item.missionStatus == 'Closed'" class="badge bg-danger position-absolute top-0 start-0">Closed</div>
             <div *ngIf="item.missionApplyStatus == 'Applied'" class="badge bg-warning position-absolute top-0 start-0">Applied</div>
             <div *ngIf="item.missionApproveStatus === 'Approved'" class="badge bg-success position-absolute top-0 start-0">Approved</div>
             <div *ngIf="item.missionStatus != 'Closed' && item.missionApplyStatus != 'Applied' && item.missionApproveStatus !== 'Approved'" class="badge bg-primary position-absolute top-0 start-0">New</div>
-            <div class="centered">{{item.missionThemeName}}</div>
+            <!-- <div class="centered">{{item.missionThemeName}}</div> -->
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{item.missionTitle}}</h5>
-            <p class="card-text">{{item.missionOrganisationDetail}}</p>
-            <p class="card-text">{{item.missionDescription}}</p>
-            <div class=" row">
+            <h5 class="card-title missiontitle">{{item.missionTitle}}</h5>
+            <p class="card-text missiondescription">{{item.missionOrganisationDetail}}</p>
+            <p class="card-text missiondescription">{{item.missionDescription}}</p>
+            <div class="row text-center">
               <div class="col-sm-6">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 512 512"><path d="M57.7 193l9.4 16.4c8.3 14.5 21.9 25.2 38 29.8L163 255.7c17.2 4.9 29 20.6 29 38.5v39.9c0 11 6.2 21 16 25.9s16 14.9 16 25.9v39c0 15.6 14.9 26.9 29.9 22.6c16.1-4.6 28.6-17.5 32.7-33.8l2.8-11.2c4.2-16.9 15.2-31.4 30.3-40l8.1-4.6c15-8.5 24.2-24.5 24.2-41.7v-8.3c0-12.7-5.1-24.9-14.1-33.9l-3.9-3.9c-9-9-21.2-14.1-33.9-14.1H257c-11.1 0-22.1-2.9-31.8-8.4l-34.5-19.7c-4.3-2.5-7.6-6.5-9.2-11.2c-3.2-9.6 1.1-20 10.2-24.5l5.9-3c6.6-3.3 14.3-3.9 21.3-1.5l23.2 7.7c8.2 2.7 17.2-.4 21.9-7.5c4.7-7 4.2-16.3-1.2-22.8l-13.6-16.3c-10-12-9.9-29.5 .3-41.3l15.7-18.3c8.8-10.3 10.2-25 3.5-36.7l-2.4-4.2c-3.5-.2-6.9-.3-10.4-.3C163.1 48 84.4 108.9 57.7 193zM464 256c0-36.8-9.6-71.4-26.4-101.5L412 164.8c-15.7 6.3-23.8 23.8-18.5 39.8l16.9 50.7c3.5 10.4 12 18.3 22.6 20.9l29.1 7.3c1.2-9 1.8-18.2 1.8-27.5zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg>
-                <span style="margin-left: 10px; font-size: 20px;">{{item.countryName}}</span>
+                <span style="margin-left: 10px; font-size: 20px;" class="contentdetail">{{item.countryName}}</span>
               </div>
               <div class="col-sm-6">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
-                <span style="margin-left: 10px; font-size: 20px;"> {{item.cityName}}</span>
+                <span style="margin-left: 10px; font-size: 20px;" class="contentdetail"> {{item.cityName}}</span>
               </div>
             </div>
             <div class="bordert">
               <div class="text-center data py-3">
-                <p style="margin-top: -12px"> <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg><span class="date" style="margin-left: 10px;">From</span> {{item.startDate | date: 'dd/MM/yyyy'}} <span class="date">until</span> {{item.endDate | date: 'dd/MM/yyyy'}}</p>
-               </div>
-               <!-- <div class="row mt-5 d-flex">
-                <div class="col-sm-4" style="margin-left: 40px;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 512 512"><path d="M57.7 193l9.4 16.4c8.3 14.5 21.9 25.2 38 29.8L163 255.7c17.2 4.9 29 20.6 29 38.5v39.9c0 11 6.2 21 16 25.9s16 14.9 16 25.9v39c0 15.6 14.9 26.9 29.9 22.6c16.1-4.6 28.6-17.5 32.7-33.8l2.8-11.2c4.2-16.9 15.2-31.4 30.3-40l8.1-4.6c15-8.5 24.2-24.5 24.2-41.7v-8.3c0-12.7-5.1-24.9-14.1-33.9l-3.9-3.9c-9-9-21.2-14.1-33.9-14.1H257c-11.1 0-22.1-2.9-31.8-8.4l-34.5-19.7c-4.3-2.5-7.6-6.5-9.2-11.2c-3.2-9.6 1.1-20 10.2-24.5l5.9-3c6.6-3.3 14.3-3.9 21.3-1.5l23.2 7.7c8.2 2.7 17.2-.4 21.9-7.5c4.7-7 4.2-16.3-1.2-22.8l-13.6-16.3c-10-12-9.9-29.5 .3-41.3l15.7-18.3c8.8-10.3 10.2-25 3.5-36.7l-2.4-4.2c-3.5-.2-6.9-.3-10.4-.3C163.1 48 84.4 108.9 57.7 193zM464 256c0-36.8-9.6-71.4-26.4-101.5L412 164.8c-15.7 6.3-23.8 23.8-18.5 39.8l16.9 50.7c3.5 10.4 12 18.3 22.6 20.9l29.1 7.3c1.2-9 1.8-18.2 1.8-27.5zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg>
-                  <span style="margin-left: 10px;">{{item.countryName}}</span>
-                </div>
-                <div class="col-sm-4 text-end">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
-                 <span style="margin-left: 10px;"> {{item.cityName}}</span>
-                </div>
-              </div> -->
-            </div>
-            
-           
-            
+                <p style="margin-top: -12px"> <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16z"/></svg><span class="date" style="margin-left: 10px;">From</span> {{item.startDate | date: 'dd/MM/yyyy'}} <span class="date">until</span> {{item.endDate | date: 'dd/MM/yyyy'}}</p>
+              </div>            
+            </div>                       
           </div>
           <div class="card-footer mt-3" style="background-color: rgba(128, 128, 128, 0.206); width: 100%;">
             <div class="d-flex row mb-3">
-              <div class="col-sm-6">
-                <i class="fa fa-user-circle-o fa-2x"></i>&nbsp;<span>{{item.totalSheets}} Seats left</span>
+              <div class="col-sm-6 text-center">
+                <i class="fa fa-user-circle-o fa-2x"></i>&nbsp;<span style="font-size: 20px; margin-left: 10px; font-weight: 500;">{{item.totalSheets}} Seats left</span>
               </div>
-              <div class="col-sm-6">
-                <i class="fa fa-clock-o fa-2x"></i>&nbsp;<span>{{item.registrationDeadLine | date: 'dd/MM/yyyy'}} Deadline</span>
+              <div class="col-sm-6 text-center">
+                <i class="fa fa-clock-o fa-2x"></i>&nbsp;<span style="font-size: 20px; margin-left: 10px; font-weight: 500;">{{item.registrationDeadLine | date: 'dd/MM/yyyy'}} Deadline</span>
               </div>
             </div>
             <button class="btn-login apply btn-3d" type="submit" *ngIf="item.missionApplyStatus =='Apply'" (click)="CheckUserLoginOrNot(item.id)" [disabled]="item.missionStatus=='Closed'"><span class="Login">Apply <i class="fa fa-arrow-right"></i></span></button>
@@ -98,44 +85,47 @@
       </div>
     </ng-container>
   </div>
-  <div class="row mt-3" *ngIf="view=='list'">
+  <div class="row mt-3" *ngIf="view == 'list'">
     <ng-container *ngIf="(missionList | search:searchParam | paginate:{itemsPerPage:listmissionPerPages,currentPage:page,totalItems:totalMission}) as result">
       <div class="card mb-4 shadow-lg rounded-3" *ngFor="let item of result">
         <div class="row g-0">
           <div class="col-md-4 position-relative">
-            <img src="{{item.missionImages}}" alt="no img" class="img-fluid rounded-start" onerror="this.src='assets/NoImg.png'">
+            <img src="{{item.missionImages}}" style="height: 240px;" alt="no img" class="img-fluid rounded-start" onerror="this.src='assets/NoImg.png'">
             <div *ngIf="item.missionStatus == 'Closed'" class="badge bg-danger position-absolute top-0 start-0">Closed</div>
             <div *ngIf="item.missionApplyStatus == 'Applied'" class="badge bg-warning position-absolute top-0 start-0">Applied</div>
             <div *ngIf="item.missionApproveStatus === 'Approved'" class="badge bg-success position-absolute top-0 start-0">Approved</div>
             <div *ngIf="item.missionStatus != 'Closed' && item.missionApplyStatus != 'Applied' && item.missionApproveStatus !== 'Approved'" class="badge bg-primary position-absolute top-0 start-0">New</div>
-            <div class="list-centered">{{item.missionThemeName}}</div>
+            <!-- <div class="list-centered">{{item.missionThemeName}}</div> -->
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">{{item.missionTitle}}</h5>
-              <p class="card-text">{{item.missionDescription}}</p>
+              <h5 class="card-title missiontitle">{{item.missionTitle}}</h5>
+              <p class="card-text missiondescription">{{item.missionDescription}}</p>
               <div class="row mb-3">
                 <div class="col-6 contentdetail">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg> {{item.countryName}}
-                </div>
-                <div class="col-6 contentdetail">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 512 512"><path d="M232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg> {{item.startDate | date: 'dd/MM/yyyy'}} until {{item.endDate | date: 'dd/MM/yyyy'}}
-                </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 512 512"><path d="M57.7 193l9.4 16.4c8.3 14.5 21.9 25.2 38 29.8L163 255.7c17.2 4.9 29 20.6 29 38.5v39.9c0 11 6.2 21 16 25.9s16 14.9 16 25.9v39c0 15.6 14.9 26.9 29.9 22.6c16.1-4.6 28.6-17.5 32.7-33.8l2.8-11.2c4.2-16.9 15.2-31.4 30.3-40l8.1-4.6c15-8.5 24.2-24.5 24.2-41.7v-8.3c0-12.7-5.1-24.9-14.1-33.9l-3.9-3.9c-9-9-21.2-14.1-33.9-14.1H257c-11.1 0-22.1-2.9-31.8-8.4l-34.5-19.7c-4.3-2.5-7.6-6.5-9.2-11.2c-3.2-9.6 1.1-20 10.2-24.5l5.9-3c6.6-3.3 14.3-3.9 21.3-1.5l23.2 7.7c8.2 2.7 17.2-.4 21.9-7.5c4.7-7 4.2-16.3-1.2-22.8l-13.6-16.3c-10-12-9.9-29.5 .3-41.3l15.7-18.3c8.8-10.3 10.2-25 3.5-36.7l-2.4-4.2c-3.5-.2-6.9-.3-10.4-.3C163.1 48 84.4 108.9 57.7 193zM464 256c0-36.8-9.6-71.4-26.4-101.5L412 164.8c-15.7 6.3-23.8 23.8-18.5 39.8l16.9 50.7c3.5 10.4 12 18.3 22.6 20.9l29.1 7.3c1.2-9 1.8-18.2 1.8-27.5zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg>
+                  <span style="margin-left: 10px; font-size: 20px;" class="contentdetail">{{item.countryName}}</span>                </div>
+                <div class="col-6 contentdetail ">
+                  
+                    <p> <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16z"/></svg><span style="margin-left: 10px; font-size: 22px;">From<span style="font-weight: 200;"> {{item.startDate | date: 'dd/MM/yyyy'}} </span> <span>until</span><span style="font-weight: 200;"> {{item.endDate | date: 'dd/MM/yyyy'}}</span></span></p>
+                  
+                                </div>
               </div>
               <div class="row mb-3">
                 <div class="col-6 contentdetail">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg> {{item.cityName}}
-                </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                  <span style="margin-left: 10px; font-size: 20px;" class="contentdetail"> {{item.cityName}}</span>
+                  </div>
                 <div class="col-6 contentdetail">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16z"/></svg> {{item.totalSheets}} Seats left
+                  <i class="fa fa-user-circle-o fa-2x"></i>&nbsp;<span style="font-size: 22px;">{{item.totalSheets}} Seats left</span>
                 </div>
-                <div class="col-6 contentdetail">
+                <!-- <div class="col-4 contentdetail">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 512 512"><path d="M232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg> {{item.registrationDeadLine | date: 'dd/MM/yyyy'}} Deadline
-                </div>
+                </div> -->
               </div>
-              <button class="btn btn-primary btn-3d" type="button" *ngIf="item.missionApplyStatus =='Apply'" (click)="CheckUserLoginOrNot(item.id)" [disabled]="item.missionStatus=='Closed'">Apply</button>
-              <button class="btn btn-secondary btn-3d" type="button" *ngIf="item.missionApplyStatus === 'Applied' && item.missionApproveStatus !== 'Approved'" disabled>Applied</button>
-              <button class="btn btn-success btn-3d" type="button" *ngIf="item.missionApproveStatus === 'Approved'" disabled>Approved</button>
+              <button class="btn apply btn-primary btn-3d" style="padding-top: 10px; padding-bottom: 10px; font-size: 20px;" type="button" *ngIf="item.missionApplyStatus =='Apply'" (click)="CheckUserLoginOrNot(item.id)" [disabled]="item.missionStatus=='Closed'">Apply</button>
+              <button class="btn applied btn-secondary btn-3d" style="padding-top: 10px; padding-bottom: 10px; font-size: 20px;" type="button" *ngIf="item.missionApplyStatus === 'Applied' && item.missionApproveStatus !== 'Approved'" disabled>Applied</button>
+              <button class="btn approved btn-success btn-3d" style="padding-top: 10px; padding-bottom: 10px; font-size: 20px;" type="button" *ngIf="item.missionApproveStatus === 'Approved'" disabled>Approved</button>
             </div>
           </div>
         </div>

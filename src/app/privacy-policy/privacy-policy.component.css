@@ -1,11 +1,23 @@
-.subtitle ul li{
-  list-style: none;
-  margin-bottom: 5px;
-  font-size: 14px;
+.subtitle ul li { 
+  list-style: none; 
+  margin-bottom: 5px; 
+  font-size: 14px; 
+} 
+.accordion-button:not(.collapsed) { 
+  color: black !important; 
+  background: white !important; 
+} 
+.accordion-button:not(.collapsed):hover { 
+  color: white !important; 
+  background-color: teal !important; 
 }
-
-.accordion-button:not(.collapsed){
-  color: black !important;
-  background: white !important;
+.accordion-body {
+  color: #333;
 }
-
+.accordion-button {
+  background-color: teal;
+  color: white;
+}
+.accordion-button:focus {
+  box-shadow: none;
+}
