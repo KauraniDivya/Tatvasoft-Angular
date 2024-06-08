@@ -14,7 +14,12 @@
   right: 0;
   left: unset;
 }
-
+.drpdown{
+  cursor: pointer;
+}
+.dropdown:hover{
+  color: teal;
+}
 .toggle-change::after{
   border-top: 0;
   border-bottom: .3em solid;
