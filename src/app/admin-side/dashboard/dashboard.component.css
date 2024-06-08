@@ -37,7 +37,7 @@
   margin: 10px 0px 0px 0px;
   padding: 10px 25px 17px 22px;
   border-radius: 24px;
-  border: solid 2px #f88634;
+  border: solid 2px teal;
   background-color: #fff;
 }
 .btnAddIcon{
@@ -45,7 +45,7 @@
   height: 14px;
   margin: 0 9px 0 0;
   padding: 0 1px 1px 0;
-  color: #f88634;
+  color: teal;
 }
 .add{
   width: 28px;
@@ -54,7 +54,7 @@
   font-family: Myriad Pro;
   font-size: 17px;
   text-align: left;
-  color: #f88634;
+  color: teal;
 }
 .searchBox{
   width: 400px;
@@ -89,7 +89,7 @@
 }
 .btnedit{
   background-color: white;
-  color: #f88634;
+  color: teal;
   cursor: pointer;
   border: none;
   font-size: 22px;

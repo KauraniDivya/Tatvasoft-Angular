@@ -40,7 +40,7 @@
 li > a.active {
   text-decoration: none;
   background-color: #ffffff;
-  color: #f88634 !important;
+  color: teal !important;
 }
 
 /* Updated CSS */

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/tabs.css';
 .ngx-pagination .current{
-  background-color: #f88634 !important;
+  background-color: teal !important;
 }
 
 .ngx-pagination{
@@ -11,8 +11,8 @@
   margin-right: 6px !important;
 }
 .ngx-pagination li.current{
-  background-color: #f88634 !important;
-  border: 1px solid #f88634 !important;
+  background-color: teal !important;
+  border: 1px solid teal !important;
   padding: 4px 8px !important;
   z-index: 999999 !important;
   position: relative;

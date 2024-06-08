@@ -72,7 +72,7 @@
   height: 48px;
   margin-right: 4%;
   border-radius: 24px;
-  border: solid 2px #f88634;
+  border: solid 2px teal;
   background-color: white;
 }
 
@@ -80,7 +80,7 @@
   width: 43px;
   height: 22px;
   font-size: 22px;
-  color: #f88634;
+  color: teal;
 }
 
 
@@ -88,7 +88,7 @@
   width: 220px;
   height: 40px;
   border-radius: 24px;
-  border: solid 2px #f88634;
+  border: solid 2px teal;
   background-color: white;
 }
 
@@ -97,7 +97,7 @@
   height: 18px;
   font-size: 22px;
   text-align: left;
-  color: #f88634;
+  color: teal;
 }
 
 .btnCancel {
@@ -120,7 +120,7 @@
   width: 120px;
   height: 40px;
   border-radius: 24px;
-  border: solid 2px #f88634;
+  border: solid 2px teal;
   background-color: white;
 }
 
@@ -129,7 +129,7 @@
   height: 18px;
   font-size: 22px;
   text-align: left;
-  color: #f88634;
+  color: teal;
 }
 .btn-Close {
   width: 140px;
