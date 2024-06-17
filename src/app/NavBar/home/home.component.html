@@ -51,6 +51,7 @@
       </div>
     </div>
   </div>
+  <!-- Search mission -->
   <input type="hidden" [(ngModel)]="searchParam">
   <div *ngIf="view == 'grid'" class="row">
     <ng-container *ngIf="(missionList | search:searchParam | paginate:{itemsPerPage:missionPerPages,currentPage:page,totalItems:totalMission}) as result">
